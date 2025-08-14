@@ -15,20 +15,21 @@ function validaProc() {
     let mediaSalarioF=0;
     let somaSalarioM=0;
     let mediaSalarioM=0;
+    let somaSalarioGrupo=0;
 
 
     do {
         idade = parseInt(prompt("Digite a idade da "+i+"ª pessoa: "));
-        while (isNaN(idade)) {
-        idade = parseInt(prompt("Digite apenas números válidos! Digite a idade da "+ (i) +"ª pessoa:"));
+        while (isNaN(idade) || idade <= 0) {
+        idade = parseInt(prompt("Digite apenas números válidos! Digite a idade da " + i + "ª pessoa:"));
         }
-        genero = prompt("Digite o gênero da "+ (i) +"ª pessoa(f/m):");
-        while (genero.toLowerCase() !== "f" && genero.toLowerCase() !== "m") {
-            genero = prompt("Digite apenas caracteres válidos! Digite o gênero da "+ (i) +"ª pessoa(f/m):");
+        genero = prompt("Digite o gênero da " + i + "ª pessoa (f/m):").toLowerCase();
+        while (genero !== "f" && genero !== "m") {
+        genero = prompt("Digite apenas 'f' ou 'm'. Gênero da " + i + "ª pessoa:").toLowerCase();
         }
-        salario = parseFloat(prompt("Digite o salário da "+i+"ª pessoa: ").replace(",", "."));
+        salario = parseFloat(prompt("Digite o salário da " + i + "ª pessoa:").replace(",", "."));
         while (isNaN(salario) || salario <= 0) {
-        salario = parseFloat(prompt("Digite apenas números válidos! Digite o salário da "+ (i) +"ª pessoa:").replace(",", "."));
+        salario = parseFloat(prompt("Digite apenas números válidos! Salário da " + i + "ª pessoa:").replace(",", "."));
         }
 
         contadorGrupo++
@@ -37,11 +38,7 @@ function validaProc() {
         console.log("Gênero: ", genero);
         console.log("Salário: R$", salario);
 
-    // Pergunta
-        resposta = prompt("Se deseja finalizar escreva 'Finalizar', se deseja continuar digite qualquer outro caractere: ");
-
     // Condicionais
-
     somaSalarioGrupo += salario;
     somaIdade += idade;
 
@@ -55,7 +52,10 @@ function validaProc() {
 
     i++; // incrementa o contador de pessoa
 
-    } while (resposta.toLowerCase() !== "finalizar")
+    // Pergunta
+        resposta = prompt("Se deseja finalizar escreva 'Finalizar', se deseja continuar digite qualquer outra tecla: ");
+
+    } while (resposta.toLowerCase() !== "finalizar");
 
     mediaSalarioGrupo = somaSalarioGrupo / contadorGrupo;
     mediaIdade = somaIdade / contadorGrupo;
@@ -64,9 +64,9 @@ function validaProc() {
 
     //Resultado
     console.log("");
-    console.log("A média de salário do grupo: ", mediaSalarioGrupo);
-    console.log("A média de todas as idade: ", mediaIdade);
-    console.log("A média de salário do gênero feminino: ", mediaSalarioF);
-    console.log("A média de salário do gênero masculino: ", mediaSalarioM);
+    console.log("A média de salário do grupo: ", mediaSalarioGrupo.toFixed(2));
+    console.log("A média de todas as idade: ", mediaIdade.toFixed(2));
+    console.log("A média de salário do gênero feminino: ", mediaSalarioF.toFixed(2));
+    console.log("A média de salário do gênero masculino: ", mediaSalarioM.toFixed(2));
     return false;
 }
