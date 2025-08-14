@@ -4,11 +4,11 @@ function validaProc() {
 
     do {
         let peso = prompt("Digite seu peso:");
-        while (isNaN(peso)) {
+        while (isNaN(peso) || peso <= 0) {
             peso = prompt("Digite apenas números válidos! Digite seu peso:");
         }
         let altura = prompt("Digite sua altura:");
-        while (isNaN(altura)) {
+        while (isNaN(altura) || altura <= 0) {
             altura = prompt("Digite apenas números válidos! Digite sua altura:");
         }
         // Verificação se o valor é realmente um número
