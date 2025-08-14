@@ -26,9 +26,7 @@ function validaProc(){
             }
         
     // Conta
-        let resultado = 0
-
-        resultado = (num1 + num2)
+        let resultado = (num1 + num2)
 
     // Pergunta da conta
         let resposta = prompt("Qual é a soma dos dois números?:");
